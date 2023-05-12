@@ -76,6 +76,18 @@
             >
           </div>
         </address>
+        <a
+          referrerpolicy="origin"
+          target="_blank"
+          style="width: fit-content"
+          href="https://trustseal.enamad.ir/?id=340332&amp;Code=cjBEkQSsmHoJB5FFRoiE"
+          ><img
+            referrerpolicy="origin"
+            src="https://Trustseal.eNamad.ir/logo.aspx?id=340332&amp;Code=cjBEkQSsmHoJB5FFRoiE"
+            alt=""
+            style="cursor: pointer"
+            id="cjBEkQSsmHoJB5FFRoiE"
+        /></a>
       </div>
     </div>
 

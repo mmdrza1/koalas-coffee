@@ -1,37 +1,12 @@
 <template>
   <div class="full-width full-height py-2">
-    <div
-      v-if="screenSize.smAndDown"
-      class="full-height overflow-hidden pa-4 d-flex flex-column"
-    >
-      <div
-        class="mb-4 grow-1 overflow-scroll overflow-x-hidden d-flex flex-column"
-      >
-        <SelectBar
-          v-if="options.length"
-          @changed="getPostageInformation"
-          v-model="address"
-          v-bind="{ placeholder, options, label }"
-          class="shadow"
-        />
-        <CartCard
-          v-for="product in productsList"
-          :key="product.id"
-          v-bind="{ ...product }"
-          v-on="{ increase, decrease, remove }"
-          class="mb-4"
-        ></CartCard>
-        <div
-          v-if="!productsList.length"
-          class="
-            full-width
-            text-center
-            grow-1
-            d-flex
-            justify-center
-            align-center
-          "
-        >
+    <div v-if="screenSize.smAndDown" class="full-height overflow-hidden pa-4 d-flex flex-column">
+      <div class="mb-4 grow-1 overflow-scroll overflow-x-hidden d-flex flex-column">
+        <SelectBar v-if="options.length" @changed="getPostageInformation" v-model="address"
+          v-bind="{ placeholder, options, label }" class="shadow" />
+        <CartCard v-for="product in productsList" :key="product.id" v-bind="{ ...product }"
+          v-on="{ increase, decrease, remove }" class="mb-4"></CartCard>
+        <div v-if="!productsList.length" class="full-width text-center grow-1 d-flex justify-center align-center">
           داده ای وجود ندارد
         </div>
       </div>
@@ -46,9 +21,7 @@
           <h4 class="regular">هزینه ارسال</h4>
           <p class="bold font-size-10">
             {{ deliveryPrice }}
-            <span v-if="deliveryPrice !== 'بدون داده'" class="regular"
-              >تومان</span
-            >
+            <span v-if="deliveryPrice !== 'بدون داده'" class="regular">تومان</span>
           </p>
         </div>
         <div class="mb-2 secondary-color d-flex justify-space-between">
@@ -58,13 +31,8 @@
             <span v-if="finalPrice !== 'بدون داده'" class="regular">تومان</span>
           </p>
         </div>
-        <BaseButton
-          class="full-width"
-          :loading="loading"
-          :disable="(!productsList.length || !address) && options.length"
-          @clicked="buttonClicked"
-          :primary="false"
-        >
+        <BaseButton class="full-width" :loading="loading" :disable="(!productsList.length || !address) && options.length"
+          @clicked="buttonClicked" :primary="false">
           {{ buttonTitle }}
         </BaseButton>
       </div>
@@ -72,13 +40,8 @@
     <section v-else :class="[cart.container, 'position-relative full-width']">
       <div :class="[cart.main, 'secondary rounded']">
         <div :class="[cart.products, 'overflow-scroll']">
-          <CartCard
-            v-for="product in productsList"
-            :key="product.id"
-            v-bind="{ ...product }"
-            v-on="{ increase, decrease, remove }"
-            class="mb-4"
-          ></CartCard>
+          <CartCard v-for="product in productsList" :key="product.id" v-bind="{ ...product }"
+            v-on="{ increase, decrease, remove }" class="mb-4"></CartCard>
         </div>
       </div>
       <div :class="[cart.price, 'pa-4 primary rounded d-flex flex-column']">
@@ -92,9 +55,7 @@
           <h4 class="regular">هزینه ارسال</h4>
           <p class="bold font-size-10">
             {{ deliveryPrice }}
-            <span v-if="deliveryPrice !== 'بدون داده'" class="regular"
-              >تومان</span
-            >
+            <span v-if="deliveryPrice !== 'بدون داده'" class="regular">تومان</span>
           </p>
         </div>
         <div class="secondary-color d-flex justify-space-between">
@@ -105,21 +66,11 @@
           </p>
         </div>
         <hr v-if="options.length" class="my-2" />
-        <SelectBar
-          v-if="options.length"
-          @changed="getPostageInformation"
-          v-model="address"
-          v-bind="{ placeholder, options, label }"
-          class="secondary-color"
-        />
+        <SelectBar v-if="options.length" @changed="getPostageInformation" v-model="address"
+          v-bind="{ placeholder, options, label }" class="secondary-color" />
         <div class="grow-1 d-flex align-end">
-          <BaseButton
-            class="full-width"
-            :loading="loading"
-            :disable="(!productsList.length || !address) && options.length"
-            @click="buttonClicked"
-            :primary="false"
-          >
+          <BaseButton class="full-width" :loading="loading"
+            :disable="(!productsList.length || !address) && options.length" @click="buttonClicked" :primary="false">
             {{ buttonTitle }}
           </BaseButton>
         </div>
@@ -181,9 +132,9 @@ export default {
     finalPrice() {
       const final = convertToRls(
         Number(persianToEnglish(this.productsPrice.replaceAll("٬", ""))) +
-          (this.deliveryPrice !== "رایگان"
-            ? Number(persianToEnglish(this.deliveryPrice.replaceAll("٬", "")))
-            : 0)
+        (this.deliveryPrice !== "رایگان"
+          ? Number(persianToEnglish(this.deliveryPrice.replaceAll("٬", "")))
+          : 0)
       );
 
       return final == "ناعدد" ? "بدون داده" : final;

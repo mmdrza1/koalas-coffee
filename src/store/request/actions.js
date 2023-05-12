@@ -24,7 +24,7 @@ export default {
       } else {
         if (response.status < 500 || response.status >= 400) {
           if (response.status === 401) {
-            localStorage.removeItem('token');
+            localStorage.removeItem("token");
             this.globalVar.toggleLoginStatus();
             this.$router.push({ name: "landing" });
           }
@@ -41,6 +41,7 @@ export default {
             timeout: 3000,
           });
         }
+        console.log(response);
         throw new Error(`${response.status} : ${response.statusText}`);
       }
     });
@@ -48,7 +49,7 @@ export default {
 
   addHeaders(headers, isJSON) {
     const requestHeaders = new Headers();
-    if (isJSON) { 
+    if (isJSON) {
       requestHeaders.append("Accept", "application/json");
       requestHeaders.append("Content-Type", "application/json");
     }
