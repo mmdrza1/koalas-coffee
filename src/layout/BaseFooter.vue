@@ -131,8 +131,8 @@ export default {
       contactInformation: [
         {
           title: "شماره تماس",
-          description: "+98 919 0400 529",
-          path: "tel:+989190400529",
+          description: "+98 912 53 68 970",
+          path: "tel:+989125368970",
         },
         {
           title: "ایمیل",
